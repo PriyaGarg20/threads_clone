@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitter Clone - Final</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  --twitter-color: #030404;
+  --twitter-background: #e6ecf0;
+}
+
+.sidebarOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebarOption .material-icons,
+.fa-twitter {
+  padding: 20px;
+}
+
+.sidebarOption h2 {
+  font-weight: 800;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.sidebarOption:hover {
+  background-color: var(--twitter-background);
+  border-radius: 30px;
+  color: var(--twitter-color);
+  transition: color 100ms ease-out;
+}
+
+.sidebarOption.active {
+  color: var(--twitter-color);
+}
+
+.sidebar__tweet {
+  width: 100%;
+  background-color: var(--twitter-color);
+  border: none;
+  color: white;
+  font-weight: 900;
+  border-radius: 30px;
+  height: 50px;
+  margin-top: 20px;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+.sidebar {
+  border-right: 1px solid var(--twitter-background);
+  flex: 0.2;
+
+  min-width: 250px;
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.fa-twitter {
+  color: var(--twitter-color);
+  font-size: 30px;
+}
+
+/* feed */
+.feed {
+  flex: 0.5;
+  border-right: 1px solid var(--twitter-background);
+  min-width: fit-content;
+  overflow-y: scroll;
+}
+
+.feed__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid var(--twitter-background);
+  padding: 15px 20px;
+}
+
+.feed__header h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.feed::-webkit-scrollbar {
+  display: none;
+}
+
+.feed {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* tweet box */
+.messageSender {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+  width: 100%;
+}
+
+.messageSender__top {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eff2f5;
+  padding: 5px;
+}
+
+.messageSender__top form {
+  flex: 1;
+  display: flex;
+}
+
+.messageSender__top form input {
+  flex: 1;
+  outline-width: 0;
+  border: none;
+  padding: 20px 25px;
+  margin: 0 10px;
+  border-radius: 999px;
+  background-color: #eff2f5;
+}
+
+
+.messageSender__bottom {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.box{
+  width: 20%;
+  background-color: var(--twitter-color);
+  border: none;
+  color: white;
+  font-weight: 900;
+  border-radius: 30px;
+  height: 50px;
+  margin-top: 0px;
+
+}
+
+.messageSender__option {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  color: gray;
+  margin: 5px;
+}
+
+.messageSender__option h3 {
+  font-size: medium;
+  margin-left: 10px;
+}
+
+.messageSender__option:hover {
+  cursor: pointer;
+  background-color: #eff2f5;
+  border-radius: 20px;
+}
+
+
+
+/* post */
+.post__avatar img {
+  border-radius: 50%;
+  height: 40px;
+}
+
+.post {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--twitter-background);
+  padding-bottom: 10px;
+}
+
+.post__body img {
+  width: 450px;
+  object-fit: contain;
+  border-radius: 20px;
+  height: 400px;
+  margin-left: -25px;
+}
+
+.post__footer {
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.post__badge {
+  font-size: 14px !important;
+  color: var(--twitter-color);
+  margin-right: 5px;
+}
+
+.post__headerSpecial {
+  font-weight: 600;
+  font-size: 12px;
+  color: gray;
+}
+
+.post__headerText h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.post__headerDescription {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.post__body {
+  flex: 1;
+  padding: 10px;
+}
+
+.post__avatar {
+  padding: 20px;
+}
+
+/* widgets */
+.widgets {
+  flex: 0.3;
+}
+
+.widgets__input {
+  display: flex;
+  align-items: center;
+  background-color: var(--twitter-background);
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.widgets__input input {
+  border: none;
+  background-color: var(--twitter-background);
+}
+
+.widgets__searchIcon {
+  color: gray;
+}
+
+.widgets__widgetContainer {
+  margin-top: 15px;
+  margin-left: 20px;
+  padding: 20px;
+  background-color: #f5f8fa;
+  border-radius: 20px;
+}
+
+.widgets__widgetContainer h2 {
+  font-size: 25px;
+  font-weight: 800;
+
+}
+.pic{
+  width: 75px;
+  height:75px;
+  border-radius: 60%;
+  justify-content: center;
+  border: 4px solid black;
+}
+.elvish {
+  margin-top: 5px;
+  margin-left: 5px;
+  padding: 5px;
+  background-color: #f5f8fa;
+  border-radius: 5px;
+}
+
+.readme {
+  font-size: medium;
+}
+a{
+  text-decoration: none;
+}
+.logothreads{
+  height: 60px;
+  width: 120px;
+  overflow-clip-margin: content-box;
+    overflow: clip;
+    margin-left: 25px;
+
+}
+    </style>
+  </head>
+  <body>
+    <!-- sidebar starts -->
+    <div class="sidebar">
+      <img class="logothreads" src="https://1000logos.net/wp-content/uploads/2023/07/Threads-Logo.jpg"></img>
+      <div class="sidebarOption active">
+        <span class="material-icons"> home </span>
+        <h2><a href="#">Home</a></h2>
+      </div>
+
+      <div class="sidebarOption">
+        <span class="material-icons"> search </span>
+        <h2>Explore</h2>
+      </div>
+
+      <div class="sidebarOption">
+        <span class="material-icons"> notifications_none </span>
+        <h2>Notifications</h2>
+      </div>
+
+      <div class="sidebarOption">
+        <span class="material-icons"> mail_outline </span>
+        <h2>Messages</h2>
+      </div>
+
+      <div class="sidebarOption">
+        <span class="material-icons"> bookmark_border </span>
+        <h2>Bookmarks</h2>
+      </div>
+
+      <div class="sidebarOption">
+        <span class="material-icons"> list_alt </span>
+        <h2><a href="post2.html">Post Something</a></h2>
+      </div>
+
+      <div class="sidebarOption">
+        <span class="material-icons"> perm_identity </span>
+        <h2><a href="home.html">Profile</a></h2>
+      </div>
+
+      <div class="sidebarOption">
+        <span class="material-icons"> more_horiz </span>
+        <h2>More</h2>
+      </div>
+      <button class="sidebar__tweet">Post</button>
+    </div>
+    <!-- sidebar ends -->
+
+    <!-- feed starts -->
+    <div class="feed">
+      <div class="feed__header">
+        <h2>Home</h2>
+      </div>
+
+      <!-- message sender starts -->
+      <div class="messageSender">
+        <div class="messageSender__top">
+          <form>
+            <input class="messageSender__input" placeholder="What's on your mind?" type="text" />
+          </form>
+          <button class="box">Post</button>
+        </div>
+
+        <div class="messageSender__bottom">
+          <div class="messageSender__option">
+            <span style="color: rgb(0, 179, 255)" class="material-icons"> videocam </span>
+            <h3>Video</h3>
+          </div>
+
+          <div class="messageSender__option">
+            <span style="color: green" class="material-icons"> photo_library </span>
+            <h3>Photo</h3>
+          </div>
+
+          <div class="messageSender__option">
+            <span style="color: orange" class="material-icons"> insert_emoticon </span>
+            <h3>Feeling</h3>
+          </div>
+        </div>
+      </div>
+      <!-- message sender ends -->
+      
+
+      <!-- post starts -->
+      <div class="post">
+        <div class="post__avatar">
+          <img
+            src="https://th.bing.com/th/id/OIP.cRx8q8gQc2klk_gyp48amAHaH_?pid=ImgDet&w=1000&h=1080&rs=1"
+            alt=""
+          />
+        </div>
+
+        <div class="post__body">
+          <div class="post__header">
+            <div class="post__headerText">
+              <h3>
+                Prakul Agarwal
+                <span class="post__headerSpecial"
+                  ><span class="material-icons post__badge"> verified </span>@Prakul</span
+                >
+              </h3>
+            </div>
+            <div class="post__headerDescription">
+              <p>Your thought about this.</p>
+            </div>
+          </div>
+          <img
+            src="https://i.pinimg.com/originals/c3/b8/72/c3b8721c1c1adab5a2f03beea03298d1.jpg"
+            alt=""
+          />
+          <div class="post__footer">
+            <span class="material-icons"> favorite_border </span>
+            <span class="material-icons">comment</span>
+            <span class="material-icons"> repeat </span>
+            <span class="material-icons"> forward </span>
+          </div>
+        </div>
+      </div>
+      <!-- post ends -->
+
+      <!-- post starts -->
+      <div class="post">
+        <div class="post__avatar">
+          <img
+            src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
+            alt=""
+          />
+        </div>
+
+        <div class="post__body">
+          <div class="post__header">
+            <div class="post__headerText">
+              <h3>
+                Priya
+                <span class="post__headerSpecial"
+                  ><span class="material-icons post__badge"> verified </span>@priya23</span
+                >
+              </h3>
+            </div>
+            <div class="post__headerDescription">
+              <p>Friendship is something that teach us lesson of togetherness .</p>
+            </div>
+          </div>
+          <img
+            src="https://i.pinimg.com/736x/36/4f/57/364f57cde4983ae72e36fd906a2d640c--working-together-quotes-a-thought.jpg"
+            alt=""
+          />
+          <div class="post__footer">
+            <span class="material-icons"> favorite_border </span>
+            <span class="material-icons">comment</span>
+            <span class="material-icons"> repeat </span>
+            <span class="material-icons"> forward </span>
+          </div>
+        </div>
+      </div>
+      <!-- post ends -->
+
+      <!-- post starts -->
+      <div class="post">
+        <div class="post__avatar">
+          <img
+            src="https://th.bing.com/th/id/OIP.cRx8q8gQc2klk_gyp48amAHaH_?pid=ImgDet&w=1000&h=1080&rs=1"
+            alt=""
+          />
+        </div>
+
+        <div class="post__body">
+          <div class="post__header">
+            <div class="post__headerText">
+              <h3>
+                Prakul Agarwal
+                <span class="post__headerSpecial"
+                  ><span class="material-icons post__badge"> verified </span>@prakul</span
+                >
+              </h3>
+            </div>
+            <div class="post__headerDescription">
+              <p>Travelling is best.</p>
+            </div>
+          </div>
+          <video width="520" height="240" controls
+            src="https://player.vimeo.com/external/325310326.sd.mp4?s=b2285047311c7d6d8cc2bfc0c62704563b630c65&profile_id=164&oauth2_token_id=57447761"></video>
+          <div class="post__footer">
+            <span class="material-icons"> favorite_border </span>
+            <span class="material-icons">comment</span>
+            <span class="material-icons"> repeat </span>
+            <span class="material-icons"> forward </span>
+          </div>
+        </div>
+      </div>
+      <!-- post ends -->
+
+            <!-- post starts -->
+            <div class="post">
+              <div class="post__avatar">
+                <img
+                  src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
+                  alt=""
+                />
+              </div>
+      
+              <div class="post__body">
+                <div class="post__header">
+                  <div class="post__headerText">
+                    <h3>
+                      Priya
+                      <span class="post__headerSpecial"
+                        ><span class="material-icons post__badge"> verified </span>@priya23</span
+                      >
+                    </h3>
+                  </div>
+                  <div class="post__headerDescription">
+                    <p>Keep moving on.</p>
+                  </div>
+                </div>
+                <video width="520" height="240" controls
+                  src="https://player.vimeo.com/external/394560673.sd.mp4?s=e700d687a2f6c8715db910be54509914a9b9ed36&profile_id=164&oauth2_token_id=57447761"></video>
+                <div class="post__footer">
+                  <span class="material-icons"> favorite_border </span>
+                  <span class="material-icons">comment</span>
+                  <span class="material-icons"> repeat </span>
+                 <span class="material-icons"> forward </span>
+                </div>
+              </div>
+            </div>
+            <!-- post ends -->
+    </div>
+    <!-- feed ends -->
+
+    <!-- widgets starts -->
+    <div class="widgets">
+      <div class="widgets__input">
+        <span class="material-icons widgets__searchIcon"> search </span>
+        <input type="text" name="search" placeholder="Search..">
+      </div>
+
+      <div class="widgets__widgetContainer">
+<center><h2>Trending Topics</h2></center>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">
+            <div class="elvish">
+              <img class="pic"
+             src="https://th.bing.com/th/id/OIF.H30qAJ2zGaKZCtw3vIiEHA?w=154&h=184&c=7&r=0&o=5&dpr=2&pid=1.7" alt="" >
+             
+             <br> <a href="https://www.instagram.com/elvish_yadav/" target="_blank"> <span class="readme">Elvish Yadav was declared as the winner of Bigg boss OTT season 2</span></a>
+            </div>
+           
+            <div class="elvish">
+            <img class="pic" 
+              src="https://lastfm.freetls.fastly.net/i/u/770x0/6d69b7111edad61c3155e8c0d4f5cdae.jpg"> 
+             
+              <br><a href="https://r.search.yahoo.com/_ylt=AwrKBzfePd9khzEKDne7HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Nj/RV=2/RE=1692380766/RO=10/RU=https%3a%2f%2fwww.mid-day.com%2fentertainment%2fkorean-entertainment%2farticle%2fbts-rm-aka-namjoons-intimate-weverse-live-stream-reassures-army-about-groups-reunion-in-2025-23303879/RK=2/RS=oVGQNnzGZZSV.HVCn45Lxp0HP0k-"  target="_blank" ><span class="readme">BTS rapper RM on band reunion in 2025: It's a journey to get back home.</span></a>
+            </div>
+            
+              <div class="elvish">
+              <img class="pic"
+                src="https://tse2.mm.bing.net/th?id=OIP.CFfNbZ0pvIA1JxzY0bKRJwHaE8&pid=Api&P=0&h=180"> 
+                <br>
+              <a href="https://timesofindia.indiatimes.com/videos/toi-original/independence-day-2023-party-of-family-by-family-and-for-family-pm-modi-slams-dynastic-politics-in-i-day-address/videoshow/102741211.cms" target="_blank"><span class="readme">Independence Day 2023: 'Party of family, by family and for family', PM Modi slams dynastic politics </span></a>
+              
+              </div>
+             
+            <div class="elvish">
+              <img class="pic"
+              src="https://tse1.mm.bing.net/th?id=OIF.hiF2Kd33i1%2fIyN81bMR1aQ&pid=Api&P=0&h=180">
+              <br>
+              <a href="https://www.indiatoday.in/movies/celebrities/story/gadar-2-twitter-reactions-sunny-deol-ameesha-patel-directed-by-anil-sharma-2419494-2023-08-11"  target="_blank"><span class="readme">'Gadar 2' Twitter review: Fans call Sunny Deol film 'an absolute must-watch'</span></a>
+            </div>
+            
+            <div class="elvish">
+              <img class="pic"
+              src="https://tse4.mm.bing.net/th?id=OIP.E2A3br7m6sRr3Y17jILGMQHaFj&pid=Api&P=0&h=180">
+              <br>
+              <a href="https://timesofindia.indiatimes.com/videos/toi-original/no-slut-prostitute-in-court-orders-supreme-court-releases-gender-just-handbook-for-judges/videoshow/102791615.cms?smsid=102791615" target="_blank"><span class="readme"> Supreme Court releases gender-just handbook for judges</span></a>
+            </div>
+            
+          </p>
+        
+      </div>
+    </div>
+    
+    <!-- widgets ends -->
+  </body>
+</html>
