@@ -1,7 +1,7 @@
 let form=document.querySelector(".post-form");
 let input=document.querySelector(".textinp");
 let image=document.querySelector(".imginp")
-let button=document.querySelector(".postbtn")
+// let button=document.querySelector(".postbtn")
 let container=document.querySelector(".cont");
 form.addEventListener("submit",function(e){
     e.preventDefault();
@@ -12,7 +12,7 @@ form.addEventListener("submit",function(e){
     input.value=" ";
     image.value=" ";
 
-
+ 
 
     
 
@@ -48,13 +48,13 @@ container.addEventListener("click",function(ev)
 {
    
     let ele=ev.target.parentElement.parentElement;
-    let classname=ele.classList;
+    // let classname=ele.classList;
      console.log(ele.className)
     // console.log(ev)
 
     if(ele.className="delete"){
         ele.parentElement.parentElement.remove();
        
-    }
+    }e
     
 })
